@@ -45,7 +45,6 @@ public:
         typedef std::forward_iterator_tag iterator_category;
         typedef int difference_type;
         iterator(pointer ptr) : ptr_(ptr), next_(new std::stack<MenuComponent*>()), end_(new std::stack<MenuComponent*>()) {}
-        ~iterator() { delete next_; delete end_; std::cout << "deleted" << std::endl;}
         virtual self_type operator++() { self_type i = *this; ptr_->get_next_iterator(this); return i; }
         virtual self_type operator++(int junk) { ptr_->get_next_iterator(this); return *this; }
         reference operator*() { return *ptr_; }
